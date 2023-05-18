@@ -85,8 +85,8 @@
                           <tr>
                             <td id="uid"></td>
                             <td id="uname"></td>
-                            <td id="email"></td>
-                            <td id="phoneNumber"></td>
+                            <td id="email">abc@gmail.com</td>
+                            <td id="phoneNumber">+919090908080</td>
                           </tr>
                         </table>
                         
