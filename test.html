@@ -1,0 +1,205 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://lpcdn-a.lpsnmedia.net/unifiedwindow/widgetSDK.min.js"></script>
+</head>
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+<body>
+ 
+
+</div>
+<div class="slds-grid slds-grid--frame slds-grid--vertical">
+
+    <!-- Header -->
+    <header class="header slds-size--1-of-1" role="banner">
+      
+      <div class="slds-grid">
+        <div class="stage-left slds-grid slds-size--2-of-12 slds-theme--alt-inverse slds-p-vertical--x-small slds-p-horizontal--medium js-nav-toggle open">
+          <span class="slds-icon__container slds-align-middle">
+            <img class="slds-icon slds-icon--small" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/8005/rows.svg" alt="Toggle Menu" />
+            
+          </span>
+        </div>
+        <div class="slds-grid slds-grow">
+          <div class="slds-p-vertical--x-small slds-p-horizontal--medium">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/8005/salesforce-logo.png" style="height: 44px;">
+          </div>
+        </div>
+      </div>
+      
+    </header>
+  
+    <!-- Stage Container -->
+    <div class="stage-container slds-grid slds-nowrap slds-size--1-of-1">
+  
+  
+  
+      <!-- Stage -->
+      <section class="stage slds-grid slds-grid--vertical slds-nowrap">
+        
+        <div class="slds-shrink-none">
+          <div class="slds-page-header"></div>
+        </div>
+        
+        <!-- Stage Main -->
+        <div class="stage-main slds-grid slds-wrap slds-grow slds-scrollable--y" role="main">
+  
+          <div class="slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
+            <section class="vh-100" style="background-color: #9de2ff;">
+                <div class="container py-5 h-100">
+                  <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-md-9 col-lg-7 col-xl-5">
+                      <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-4">
+                          <div class="d-flex text-black">
+                            <div class="flex-shrink-0">
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                                alt="Generic placeholder image" class="img-fluid"
+                                style="width: 180px; border-radius: 10px;">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                        </div>
+                        <h1>User Account Details</h1>
+                        <table>
+                          <tr>
+                            <th>Account Number</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                          </tr>
+                          <tr>
+                            <td id="uid"></td>
+                            <td id="uname"></td>
+                            <td id="email"></td>
+                            <td id="phoneNumber"></td>
+                          </tr>
+                        </table>
+                        
+                        <h2>TV Package Details</h2>
+                        <table>
+                          <tr>
+                            <th>Package Name</th>
+                            <th>Subscription Date</th>
+                            <th>Expiration Date</th>
+                          </tr>
+                          <tr>
+                            <td>Sky Entertainment</td>
+                            <td>2023-05-01</td>
+                            <td>2024-05-01</td>
+                          </tr>
+                        </table>
+                        
+                        <h2>TV Channel Details</h2>
+                        <table>
+                          <tr>
+                            <th>Channel Name</th>
+                            <th>Channel Number</th>
+                          </tr>
+                          <tr>
+                            <td>Cartoon NetWork</td>
+                            <td>101</td>
+                          </tr>
+                          <tr>
+                            <td>C</td>
+                            <td>102</td>
+                          </tr>
+                          <tr>
+                            <td>Channel 3</td>
+                            <td>103</td>
+                          </tr>
+                        </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+  
+          </div>
+  
+          
+  
+        </div>
+        
+      </section>
+    </div>
+  </div>
+  
+<script type="text/javascript">
+const queryString = window.location.search;
+const parameters = new URLSearchParams(queryString);
+const value = parameters.get('uname');
+const value1 = parameters.get('uid');
+const value2 = parameters.get('uskill');
+const value3 = parameters.get('email');
+const value4 = parameters.get('phoneNumber');
+
+console.log(value3)
+
+document.getElementById('uname').textContent=value;
+document.getElementById('uid').textContent=value1;
+//document.getElementById('uskill').textContent=value2;
+document.getElementById('email').textContent=value3;
+document.getElementById('phoneNumber').textContent=value4;
+
+
+
+  (function () {
+      var lpWidgetSDK,
+          widgetSDKAPI = lpTag.LPWidgetSDK.API;
+      window.addEventListener("load", function () {
+          var bindingEvent = [widgetSDKAPI.events.CONVERSATION_INFO, widgetSDKAPI.events.MESSAGES],
+                  opts = {bind: {}};
+
+          bindingEvent.forEach(function (eventName) {
+              opts.bind[eventName] = {func: _onEvent, context: this};
+          });
+
+          lpWidgetSDK = lpTag.LPWidgetSDK.init(opts);
+      }.bind(this));
+
+      function _onEvent(eventData) {
+          if (eventData && widgetSDKAPI.events.MESSAGES === eventData.type) {
+              var content =  eventData.data.content;
+              console.log("MESSAGES data: ", eventData );
+              if (content.indexOf("disposeWidget") > -1) {
+                  disposeWidget();
+              }
+          } else if (eventData && widgetSDKAPI.events.CONVERSATION_INFO === eventData.type) {
+              console.log("CONVERSATION_INFO data: ", eventData );
+          }
+          sendNotification("Event received!");
+      }
+      function sendNotification(text) {
+          if (typeof text === "string") {
+              lpWidgetSDK.notify({content: text}, function (err) {
+                  if (err) {
+                      console.log("Error on sending notification from widget");
+                  }
+              });
+          }
+      }
+      function disposeWidget() {
+          lpWidgetSDK.dispose(function (data) {
+              console.log("bla");
+          });
+      }
+  })();
+</script>
+</body>
